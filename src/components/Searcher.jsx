@@ -16,7 +16,7 @@ const userNotFound = {
 const Searcher = (props) => {
     const { setUserData } = props
 
-    const [searchedUser, setSearchedUser] = useState('erlynascarate')
+    const [searchedUser, setSearchedUser] = useState('octocat')
     const [notFound, setNotFound] = useState(false)
 
     const handleSubmit = (event) => {
