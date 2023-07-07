@@ -9,6 +9,7 @@ const PaperInformation = (props) => {
         { title: 'Followers', value: followers },
         { title: 'Following', value: following },
     ]
+
     return (
         <Paper elevation={3}>
             <Stack

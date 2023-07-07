@@ -2,9 +2,9 @@ import { Link, Stack, Typography } from '@mui/material'
 
 const PrincipalInformation = (props) => {
     const { userData } = props
-    const { name, created_at, html_url, login } = userData
+    const { bio, name, created_at, html_url, login } = userData
 
-    const date = new Date(created_at).toLocaleString()
+    const date = new Date(created_at).toDateString()
 
     return (
         <>
@@ -16,15 +16,17 @@ const PrincipalInformation = (props) => {
                 <Typography variant='h4'>{name}</Typography>
                 <Typography variant='subtitle2'>{date}</Typography>
             </Stack>
-            {html_url ? (
-                <Link href={html_url} target='_blank' rel='noreferrer'>
-                    <Typography variant='caption'>@{login}</Typography>
-                </Link>
-            ) : (
-                <Typography sx={{ cursor: 'not-allowed' }} variant='caption'>
-                    @{login}
-                </Typography>
-            )}
+            <Link
+                href={html_url}
+                target='_blank'
+                rel='noreferrer'
+                color={html_url ? 'primary' : 'inherit'}
+                underline={html_url ? 'always' : 'none'}
+                variant='caption'
+            >
+                @{login}
+            </Link>
+            <Typography>{bio ?? 'No biography unu'}</Typography>
         </>
     )
 }

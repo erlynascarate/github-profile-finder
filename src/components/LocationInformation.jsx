@@ -6,51 +6,47 @@ const LocationInformation = (props) => {
     const { location, twitter_username, blog, company } = userData
 
     return (
-        <Grid container spacing={2} sx={{ marginTop: '15px' }}>
+        <Grid container sx={{ mt: 2 }} spacing={2}>
             <Grid item xs={12} sm={6}>
                 <Stack direction='row' spacing={2}>
                     <LocationOn />
                     <Typography>{location ?? 'Not Available'}</Typography>
                 </Stack>
             </Grid>
+
             <Grid item xs={12} sm={6}>
                 <Stack direction='row' spacing={2}>
                     <Twitter />
-                    {twitter_username ? (
-                        <Link
-                            href={`https://twitter.com/${twitter_username}`}
-                            target='_blank'
-                            rel='noreferrer'
-                            underline='hover'
-                        >
-                            <Typography>@{twitter_username}</Typography>
-                        </Link>
-                    ) : (
-                        <Typography sx={{ cursor: 'not-allowed' }}>
-                            Not Available
-                        </Typography>
-                    )}
+                    <Link
+                        href={
+                            twitter_username &&
+                            `https://twitter.com/${twitter_username}`
+                        }
+                        target='_blank'
+                        rel='noreferrer'
+                        color={twitter_username ? 'primary' : 'inherit'}
+                        underline={twitter_username ? 'always' : 'none'}
+                    >
+                        @{twitter_username ?? 'NotAvailable'}
+                    </Link>
                 </Stack>
             </Grid>
+
             <Grid item xs={12} sm={6}>
                 <Stack direction='row' spacing={2}>
                     <Language />
-                    {blog ? (
-                        <Link
-                            href={blog}
-                            target='_blank'
-                            rel='noreferrer'
-                            underline='hover'
-                        >
-                            <Typography>{blog}</Typography>
-                        </Link>
-                    ) : (
-                        <Typography sx={{ cursor: 'not-allowed' }}>
-                            Not Available
-                        </Typography>
-                    )}
+                    <Link
+                        href={blog}
+                        target='_blank'
+                        rel='noreferrer'
+                        color={blog ? 'primary' : 'inherit'}
+                        underline={blog ? 'always' : 'none'}
+                    >
+                        {blog || 'Not Available'}
+                    </Link>
                 </Stack>
             </Grid>
+
             <Grid item xs={12} sm={6}>
                 <Stack direction='row' spacing={2}>
                     <Business />

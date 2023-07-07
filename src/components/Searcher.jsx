@@ -1,6 +1,6 @@
-import { IconButton, Stack, TextField } from '@mui/material'
-import SearchIcon from '@mui/icons-material/Search'
 import { useEffect, useState } from 'react'
+import { IconButton, Box, TextField } from '@mui/material'
+import SearchIcon from '@mui/icons-material/Search'
 
 import { getGitHubUser } from '../services/users'
 
@@ -45,32 +45,32 @@ const Searcher = (props) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <Stack
+        <Box
+            onSubmit={handleSubmit}
+            sx={{
+                marginInline: 'auto',
+                inlineSize: '80%',
+            }}
+            component='form'
+        >
+            <TextField
                 sx={{
-                    marginInline: 'auto',
-                    inlineSize: '80%',
+                    inlineSize: '100%',
                 }}
-            >
-                <TextField
-                    sx={{
-                        inlineSize: '100%',
-                    }}
-                    name='searchedUser'
-                    label={notFound ? 'GitHub User Not Found' : 'GitHub User'}
-                    placeholder='Octocat'
-                    variant='outlined'
-                    color={notFound ? 'error' : 'primary'}
-                    InputProps={{
-                        endAdornment: (
-                            <IconButton type='submit'>
-                                <SearchIcon />
-                            </IconButton>
-                        ),
-                    }}
-                />
-            </Stack>
-        </form>
+                color={notFound ? 'error' : 'primary'}
+                name='searchedUser'
+                label={notFound ? 'GitHub User Not Found' : 'GitHub User'}
+                placeholder='Octocat'
+                variant='outlined'
+                InputProps={{
+                    endAdornment: (
+                        <IconButton type='submit'>
+                            <SearchIcon />
+                        </IconButton>
+                    ),
+                }}
+            />
+        </Box>
     )
 }
 
