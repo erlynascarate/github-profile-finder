@@ -36,7 +36,7 @@ const LocationInformation = (props) => {
                 <Stack direction='row' spacing={2}>
                     <Language />
                     <Link
-                        href={blog}
+                        href={blog || null}
                         target='_blank'
                         rel='noreferrer'
                         color={blog ? 'primary' : 'inherit'}
